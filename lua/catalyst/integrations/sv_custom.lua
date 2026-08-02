@@ -1,10 +1,5 @@
 Catalyst.Custom = Catalyst.Custom or {}
 
-function Catalyst.Custom.HasPurchaseBeenGranted(transactionId)
-    // TODO check if granted via data /sqlite etc
-    return false
-end
-
 function Catalyst.Custom.GrantPackage(steamId, packageId, transactionId)
     // Grant groups/roles/weapons etc.
 
@@ -26,6 +21,6 @@ function Catalyst.Custom.BanPlayer(steamId, reason, durationMinutes)
 end
 
 function Catalyst.Custom.UnbanPlayer(steamId)
-    // Ban user
+    // Unban user
     RunConsoleCommand("ulx", "unban", util.SteamIDFrom64(steamId))
 end
