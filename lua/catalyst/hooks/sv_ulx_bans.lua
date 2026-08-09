@@ -1,4 +1,5 @@
 hook.Add("ULibPlayerBanned", "Catalyst.UlibPlayerBanned", function(steamId, banData)
+    if !Catalyst.ULX.IsAvailable() then return end
     local duration = 0
     if Catalyst.SuppressBanSync and Catalyst.SuppressBanSync[util.SteamIDTo64(steamId)] then
         Catalyst.Logger.Debug("Ignoring laravel-originated ban sync for "..tostring(util.SteamIDTo64(steamId)))
@@ -22,6 +23,7 @@ hook.Add("ULibPlayerBanned", "Catalyst.UlibPlayerBanned", function(steamId, banD
 end)
 
 hook.Add("ULibPlayerUnBanned", "Catalyst.UlibPlayerUnbanned", function(steamId, admin)
+    if !Catalyst.ULX.IsAvailable() then return end
     if Catalyst.SuppressUnBanSync and Catalyst.SuppressUnBanSync[util.SteamIDTo64(steamId)] then
         Catalyst.Logger.Debug("Ignoring laravel-originated unban sync for "..tostring(util.SteamIDTo64(steamId)))
         return
